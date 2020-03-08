@@ -236,7 +236,7 @@ namespace EggFarmer
                             Stealth.Client.CancelWaitTarget();
                             Stealth.Client.CancelTarget();
 
-                            while (true) //test
+                            while (true)
                             {
                                 StopWatch = DateTime.Now;
                                 Flutes.First().DoubleClick();

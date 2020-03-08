@@ -33,3 +33,4 @@ C:\Users\jeff\Source\Repos\EggFarmer\EggFarmer\obj\Debug\EggFarmer.application
 C:\Users\jeff\Source\Repos\EggFarmer\EggFarmer\obj\Debug\EggFarmer.csproj.CopyComplete
 C:\Users\jeff\Source\Repos\EggFarmer\EggFarmer\obj\Debug\EggFarmer.exe
 C:\Users\jeff\Source\Repos\EggFarmer\EggFarmer\obj\Debug\EggFarmer.pdb
+C:\Users\jeff\Source\Repos\EggFarmer\EggFarmer\obj\Debug\EggFarmer.csprojAssemblyReference.cache
