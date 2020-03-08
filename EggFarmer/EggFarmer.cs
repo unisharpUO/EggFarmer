@@ -303,6 +303,7 @@ namespace EggFarmer
                 catch (Exception x)
                 {
                     MessageBox.Show(x.Message.ToString() + " " + x.StackTrace.ToString());
+                    Stealth.Client.CancelTarget();
                 }
             }
         }
