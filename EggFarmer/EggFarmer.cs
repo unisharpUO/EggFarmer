@@ -201,8 +201,8 @@ namespace EggFarmer
                     Search:
                     lock (WorkLocker)
                     {
-                        /*Scanner.Range = 5;
-                        Scanner.VerticalRange = 5;*/
+                        Scanner.Range = 5;
+                        Scanner.VerticalRange = 5;
                         Stealth.Client.SetFindDistance(5);
                         Stealth.Client.SetFindVertical(0);
 
@@ -241,16 +241,34 @@ namespace EggFarmer
                     {
                         lock (WorkLocker)
                         {
+                            if (GreaterCurePotion.Amount == 1)
+                            {
+                                workerFluteRoutine.ReportProgress(0, "Ran out of cures.");
+                                Working = false;
+                                workerEggFinder.CancelAsync();
+                                workerFluteRoutine.CancelAsync();
+                                workerCombat.CancelAsync();
+                            }
+                            if (SmokeBomb.Amount == 1)
+                            {
+                                workerFluteRoutine.ReportProgress(0, "Ran out of smokebombs.");
+                                Working = false;
+                                workerEggFinder.CancelAsync();
+                                workerFluteRoutine.CancelAsync();
+                                workerCombat.CancelAsync();
+                            }
+
                             List<RareSerpentEgg> Eggs = Scanner.Find<RareSerpentEgg>(0x0, false);
+                            Thread.Sleep(250);
 
                             if (Eggs.Count > 0)
                             {
                                 lock (WorkLocker)
                                 {
-                                    workerEggFinder.ReportProgress(0, "Found egg");
+                                    workerFluteRoutine.ReportProgress(0, "Found egg");
                                     for (int i = 0; i < Eggs.Count; i++)
                                     {
-                                        workerEggFinder.ReportProgress(0, "Moving to egg");
+                                        workerFluteRoutine.ReportProgress(0, "Moving to egg");
                                         while (Self.Location.X != Eggs[i].Location.X || Self.Location.Y != Eggs[i].Location.Y)
                                         {
                                             Thread.Sleep(750);
@@ -260,7 +278,9 @@ namespace EggFarmer
                                         }
                                         Thread.Sleep(1000);
                                         Stealth.Client.MoveItem(Eggs[i].Serial.Value, 1, Self.Backpack.Serial.Value, 0, 0, 0);
-                                        workerEggFinder.ReportProgress(0, "Picking up egg");
+                                        Thread.Sleep(250);
+
+                                        workerFluteRoutine.ReportProgress(0, "Picking up egg");
                                         EggsFound++;
                                         Scanner.Ignore(Eggs[i].Serial);
                                         Thread.Sleep(1000);

@@ -42,14 +42,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="EggFarmer.exe" size="2359808">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="EggFarmer.exe" size="2360320">
       <assemblyIdentity name="EggFarmer" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>pFZCEdwHyMp1ayykZuMgTueITWGTK1qPeDYk5KG6kKk=</dsig:DigestValue>
+        <dsig:DigestValue>4P1yMGyGXdrG4arf8G+f6QM5yPbWiuipbpj5+5qbglY=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
