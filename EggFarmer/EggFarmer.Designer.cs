@@ -43,6 +43,10 @@
             this.btnShowAreas = new System.Windows.Forms.Button();
             this.workerCombat = new System.ComponentModel.BackgroundWorker();
             this.pboxEggSuicide = new System.Windows.Forms.PictureBox();
+            this.lblGreaterCuresValue = new System.Windows.Forms.Label();
+            this.lblGreaterCures = new System.Windows.Forms.Label();
+            this.lblSmokebombsValue = new System.Windows.Forms.Label();
+            this.lblSmokebombs = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pboxEggSuicide)).BeginInit();
             this.SuspendLayout();
             // 
@@ -181,11 +185,51 @@
             this.pboxEggSuicide.TabIndex = 16;
             this.pboxEggSuicide.TabStop = false;
             // 
+            // lblGreaterCuresValue
+            // 
+            this.lblGreaterCuresValue.AutoSize = true;
+            this.lblGreaterCuresValue.Location = new System.Drawing.Point(85, 340);
+            this.lblGreaterCuresValue.Name = "lblGreaterCuresValue";
+            this.lblGreaterCuresValue.Size = new System.Drawing.Size(13, 13);
+            this.lblGreaterCuresValue.TabIndex = 18;
+            this.lblGreaterCuresValue.Text = "0";
+            // 
+            // lblGreaterCures
+            // 
+            this.lblGreaterCures.AutoSize = true;
+            this.lblGreaterCures.Location = new System.Drawing.Point(12, 340);
+            this.lblGreaterCures.Name = "lblGreaterCures";
+            this.lblGreaterCures.Size = new System.Drawing.Size(75, 13);
+            this.lblGreaterCures.TabIndex = 17;
+            this.lblGreaterCures.Text = "Greater Cures:";
+            // 
+            // lblSmokebombsValue
+            // 
+            this.lblSmokebombsValue.AutoSize = true;
+            this.lblSmokebombsValue.Location = new System.Drawing.Point(410, 340);
+            this.lblSmokebombsValue.Name = "lblSmokebombsValue";
+            this.lblSmokebombsValue.Size = new System.Drawing.Size(13, 13);
+            this.lblSmokebombsValue.TabIndex = 20;
+            this.lblSmokebombsValue.Text = "0";
+            // 
+            // lblSmokebombs
+            // 
+            this.lblSmokebombs.AutoSize = true;
+            this.lblSmokebombs.Location = new System.Drawing.Point(337, 340);
+            this.lblSmokebombs.Name = "lblSmokebombs";
+            this.lblSmokebombs.Size = new System.Drawing.Size(74, 13);
+            this.lblSmokebombs.TabIndex = 19;
+            this.lblSmokebombs.Text = "Smokebombs:";
+            // 
             // formEggFinder
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(445, 365);
+            this.Controls.Add(this.lblSmokebombsValue);
+            this.Controls.Add(this.lblSmokebombs);
+            this.Controls.Add(this.lblGreaterCuresValue);
+            this.Controls.Add(this.lblGreaterCures);
             this.Controls.Add(this.pboxEggSuicide);
             this.Controls.Add(this.btnShowAreas);
             this.Controls.Add(this.cboxAreas);
@@ -223,6 +267,10 @@
         private System.Windows.Forms.Button btnShowAreas;
         private System.ComponentModel.BackgroundWorker workerCombat;
         private System.Windows.Forms.PictureBox pboxEggSuicide;
+        private System.Windows.Forms.Label lblGreaterCuresValue;
+        private System.Windows.Forms.Label lblGreaterCures;
+        private System.Windows.Forms.Label lblSmokebombsValue;
+        private System.Windows.Forms.Label lblSmokebombs;
     }
 }
 

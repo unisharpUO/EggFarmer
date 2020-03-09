@@ -42,26 +42,26 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="EggFarmer.exe" size="2358272">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="EggFarmer.exe" size="2359808">
       <assemblyIdentity name="EggFarmer" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>Oyq2e+iltiRulJB5+s6g7AhqlaGJ4bbbtmA82Xm8pVE=</dsig:DigestValue>
+        <dsig:DigestValue>VyZqIICkDmBjELjopYZ9EkJvrGn+EV/vT818p9/7Jvk=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="ScriptSDK.dll" size="300544">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="ScriptSDK.dll" size="300032">
       <assemblyIdentity name="ScriptSDK" version="0.9.7.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>LqAFV5r7jVTM/AbIOC1hXolypIs+VW2KKUdSDtm5rpQ=</dsig:DigestValue>
+        <dsig:DigestValue>ojn5vQca8YLl4YsHO8+Fxhg7IyroFk8NnWMZPK92ELk=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

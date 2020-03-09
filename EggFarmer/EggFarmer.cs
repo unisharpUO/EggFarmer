@@ -53,7 +53,7 @@ namespace EggFarmer
         };
         private static int CurrentSpot = 0;
         private bool EggFinderFormClosing, FluteRoutineComplete, EggFinderComplete, CombatComplete;
-        private BaseCurePotion GreaterCurePotion
+        /*private BaseCurePotion GreaterCurePotion
         {
             get { return Scanner.Find<BaseCurePotion>(Self.Backpack.Serial.Value, false).First(); }
         }
@@ -65,6 +65,10 @@ namespace EggFarmer
         {
             get { return Scanner.Find<SnakeCharmerFlute>(Self.Backpack.Serial.Value, false); }
         }
+        */
+        private BaseCurePotion GreaterCurePotion;
+        private BaseSmokeBomb SmokeBomb;
+        private List<SnakeCharmerFlute> Flutes;
         #endregion
 
         public formEggFinder()
@@ -129,7 +133,15 @@ namespace EggFarmer
                         Self.Backpack.DoubleClick();
                         Thread.Sleep(750);
 
-                        workerEggFinder.RunWorkerAsync();
+                        SmokeBomb = Scanner.Find<BaseSmokeBomb>(Self.Backpack.Serial.Value, false).First();
+                        Thread.Sleep(250);
+                        lblSmokebombsValue.Text = SmokeBomb.Amount.ToString();
+
+                        GreaterCurePotion = Scanner.Find<BaseCurePotion>(Self.Backpack.Serial.Value, false).First();
+                        Thread.Sleep(250);
+                        lblGreaterCuresValue.Text = GreaterCurePotion.Amount.ToString();
+
+                        //workerEggFinder.RunWorkerAsync();
                         workerFluteRoutine.RunWorkerAsync();
                         workerCombat.RunWorkerAsync();
 
@@ -191,10 +203,17 @@ namespace EggFarmer
                     {
                         /*Scanner.Range = 5;
                         Scanner.VerticalRange = 5;*/
-                        Stealth.Client.SetFindDistance(5);
-                        Stealth.Client.SetFindVertical(0);
+                        Stealth.Client.SetFindDistance(15);
+                        Stealth.Client.SetFindVertical(15);
+
                         Snakes = Scanner.Find<Snakes>(0x0, false).OrderBy(x => x.Distance).ToList();
+                        Thread.Sleep(250);
+
                         Nests = Scanner.Find<SerpentNest>(0x0, false).OrderBy(n => n.Distance).ToList();
+                        Thread.Sleep(250);
+
+                        Flutes = Scanner.Find<SnakeCharmerFlute>(Self.Backpack.Serial.Value, false);
+                        Thread.Sleep(250);
                     }
 
                     if (Snakes.Count == 0 || Nests.Count == 0)
@@ -222,6 +241,33 @@ namespace EggFarmer
                     {
                         lock (WorkLocker)
                         {
+                            List<RareSerpentEgg> Eggs = Scanner.Find<RareSerpentEgg>(0x0, false);
+
+                            if (Eggs.Count > 0)
+                            {
+                                lock (WorkLocker)
+                                {
+                                    workerEggFinder.ReportProgress(0, "Found egg");
+                                    for (int i = 0; i < Eggs.Count; i++)
+                                    {
+                                        workerEggFinder.ReportProgress(0, "Moving to egg");
+                                        while (Self.Location.X != Eggs[i].Location.X || Self.Location.Y != Eggs[i].Location.Y)
+                                        {
+                                            Thread.Sleep(750);
+                                            Stealth.Client.MoveXY((ushort)Eggs[i].Location.X, (ushort)Eggs[0].Location.Y, false, 0, false);
+                                            if (Self.Location.X != Eggs[i].Location.X || Self.Location.Y != Eggs[i].Location.Y)
+                                                break;
+                                        }
+                                        Thread.Sleep(1000);
+                                        Stealth.Client.MoveItem(Eggs[i].Serial.Value, 1, Self.Backpack.Serial.Value, 0, 0, 0);
+                                        workerEggFinder.ReportProgress(0, "Picking up egg");
+                                        EggsFound++;
+                                        Scanner.Ignore(Eggs[i].Serial);
+                                        Thread.Sleep(1000);
+                                    }
+                                }
+                            }
+
                             if (Nests[0].Distance > 9)
                             {
                                 workerFluteRoutine.ReportProgress(0, "Nest too far, moving to next spot...");
@@ -257,7 +303,7 @@ namespace EggFarmer
                             if (Stealth.Client.WaitJournalLine(StopWatch, "Target cannot be seen.", 2000))
                             {
                                 workerFluteRoutine.ReportProgress(0, "Snake couldn't be seen, checking for another...");
-                                break;
+                                continue;
                             }
                             else if (Stealth.Client.WaitJournalLine(StopWatch, "That creature is too far away.", 2000))
                             {
@@ -295,6 +341,7 @@ namespace EggFarmer
                             List<RareSerpentEgg> TotalEggs;
                             int TotalEggsCount;
                             TotalEggs = Scanner.Find<RareSerpentEgg>(Self.Backpack.Serial.Value, false);
+                            Thread.Sleep(250);
                             TotalEggsCount = TotalEggs.Count;
                             workerEggFinder.ReportProgress(0, "Eggs Total " + TotalEggsCount);
                         }
