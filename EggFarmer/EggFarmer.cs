@@ -18,7 +18,6 @@ namespace EggFarmer
     {
 
         #region Properties
-
         private PlayerMobile Self = PlayerMobile.GetPlayer();
         private DateTime StopWatch, StopWatchBuff;
         private bool Working = false;
@@ -84,7 +83,6 @@ namespace EggFarmer
         }
 
         #region Form Events
-
         private void formEggFinder_Load(object sender, EventArgs e)
         {
         }
@@ -106,7 +104,6 @@ namespace EggFarmer
 
             base.OnFormClosing(e);
         }
-
         #endregion
 
         #region Buttons and Combo Boxes
