@@ -203,8 +203,8 @@ namespace EggFarmer
                     {
                         /*Scanner.Range = 5;
                         Scanner.VerticalRange = 5;*/
-                        Stealth.Client.SetFindDistance(15);
-                        Stealth.Client.SetFindVertical(15);
+                        Stealth.Client.SetFindDistance(5);
+                        Stealth.Client.SetFindVertical(0);
 
                         Snakes = Scanner.Find<Snakes>(0x0, false).OrderBy(x => x.Distance).ToList();
                         Thread.Sleep(250);
