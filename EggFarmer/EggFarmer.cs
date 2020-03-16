@@ -354,13 +354,13 @@ namespace EggFarmer
 
                             Thread.Sleep(10000);
 
-                            workerEggFinder.ReportProgress(0, "Eggs Found " + EggsFound);
+                            workerFluteRoutine.ReportProgress(0, "Eggs Found " + EggsFound);
                             List<RareSerpentEgg> TotalEggs;
                             int TotalEggsCount;
                             TotalEggs = Scanner.Find<RareSerpentEgg>(Self.Backpack.Serial.Value, false);
                             Thread.Sleep(250);
                             TotalEggsCount = TotalEggs.Count;
-                            workerEggFinder.ReportProgress(0, "Eggs Total " + TotalEggsCount);
+                            workerFluteRoutine.ReportProgress(0, "Eggs Total " + TotalEggsCount);
                         }
                     }
                 }
@@ -441,7 +441,12 @@ namespace EggFarmer
         #region Worker Events
         private void workerFluteRoutine_ProgressChanged(object sender, ProgressChangedEventArgs e)
         {
-            lblStatus.Text = e.UserState.ToString();
+            if (e.UserState.ToString().Contains("Eggs Found"))
+                lblEggsFoundValue.Text = e.UserState.ToString().Split(' ')[2];
+            else if (e.UserState.ToString().Contains("Eggs Total"))
+                lblEggsTotalValue.Text = e.UserState.ToString().Split(' ')[2];
+            else
+                lblStatus.Text = e.UserState.ToString();
         }
 
         private void workerFluteRoutine_WorkerComplete(object sender, RunWorkerCompletedEventArgs e)
